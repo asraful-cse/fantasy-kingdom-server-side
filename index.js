@@ -1,7 +1,7 @@
 const express = require("express");
 const { MongoClient } = require("mongodb");
 
-// mongodb er id jonno
+// mongodb user id.........................
 const ObjectId = require("mongodb").ObjectId;
 
 require("dotenv").config();
@@ -11,7 +11,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 const port = process.env.PORT || 5000;
-// middleware 2,3 by cors must be use
+// middleware 2,3 by cors must be use.......................
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,7 +40,7 @@ async function run() {
 		});
 
 		// get products.......................................................
-		//  make route and get data
+		//  make route and get data.................................
 		app.get("/products", (req, res) => {
 			servicesCollection.find({}).toArray((err, results) => {
 				res.send(results);
@@ -54,7 +54,7 @@ async function run() {
 				res.send(result);
 			});
 		});
-		// get all order by email query
+		// get all order by email query........................
 		app.get("/myOrders/:email", (req, res) => {
 			console.log(req.params);
 			ordersCollection
@@ -64,9 +64,7 @@ async function run() {
 				});
 		});
 
-		//  delete-------------------------
-
-		// DELETE API
+		//  delete-------------------------.............................
 		app.delete("/myOrders/:id", async (req, res) => {
 			const id = req.params.id;
 			const query = { _id: ObjectId(id) };
