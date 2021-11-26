@@ -1,11 +1,11 @@
 const express = require("express");
 const { MongoClient } = require("mongodb");
 
-// mongodb user id.........................
+// mongodb user id.....................................
 const ObjectId = require("mongodb").ObjectId;
 
 require("dotenv").config();
-// middleware 1 by cors must be use
+// middleware 1 by cors must be use.....................
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
@@ -29,10 +29,10 @@ async function run() {
 		const database = client.db("fantasyKingdom");
 		const servicesCollection = database.collection("services");
 		const ordersCollection = database.collection("orders");
+
 		// post api --------------------------------------
 		app.post("/addEvent", async (req, res) => {
 			const event = req.body;
-
 			console.log("hits the post api", event);
 			const result = await servicesCollection.insertOne(event);
 			console.log("this is service result", result);
